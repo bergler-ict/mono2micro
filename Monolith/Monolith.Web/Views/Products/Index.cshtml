@@ -1,0 +1,20 @@
+﻿@model Monolith.Web.Models.ProductsModel
+@{
+    int partitionSize = 4;
+    ViewBag.Title = Model.SelectedCategory;
+}
+
+<h2>PRODUCTS - @Model.SelectedCategory</h2>
+
+
+@foreach (var partition in Model.ProductModels.Partition(partitionSize))
+{
+<div class="row">
+    @foreach (var product in partition)
+    {
+        <div class="col-@(12/partitionSize) d-flex align-items-stretch">
+            @Html.Partial("ProductCardView", product)
+        </div>
+    }
+</div>
+}

@@ -1,0 +1,37 @@
+﻿@page "/products"
+@page "/products/{category}"
+@inject IProductsService _productsService
+
+<h2>Products - @Category</h2>
+
+@foreach (var partition in ProductList.Partition(PartitionSize))
+{
+    <div class="row">
+        @foreach (var product in partition)
+        {
+            <div class="col-@(12/PartitionSize) d-flex align-items-stretch">
+                <ProductCard Product="@product"></ProductCard>
+            </div>
+        }
+    </div>
+}
+
+@code {
+
+    const int PartitionSize = 4;
+
+    [Parameter]
+    public string Category { get; set; }
+
+    public IEnumerable<Product> ProductList { get; set; } = Enumerable.Empty<Product>();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Category == null)
+        {
+            Category = NavMenu.DefaultCategory;
+        }
+
+        ProductList = await _productsService.GetProductsByCategoryAsync(Category);
+    }
+}

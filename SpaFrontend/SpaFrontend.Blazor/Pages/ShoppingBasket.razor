@@ -1,0 +1,90 @@
+﻿@page "/shoppingbasket"
+@inject IShoppingBasketService _shoppingBasketService
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <h2 class="mb-5">Your shopping cart contents:</h2>
+        <div class="container-fluid">
+            <table class="table ">
+                <thead>
+                    <tr class="d-flex">
+                        <th class="col-7" scope="col">Product</th>
+                        <th class="col-2" scope="col">Quantity</th>
+                        <th class="col-2 text-right" scope="col">Total</th>
+                        <th class="col-1" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ShoppingBasketItems)
+                    {
+                        <tr class="d-flex">
+                            <td class="col-7">@item.ProductName</td>
+                            <td class="col-2">
+                                @item.Quantity&nbsp;
+                                <a @onclick="async () => await onProductPlusMinusClicked(item.ProductID, -1)"><i class="fas fa-minus-circle text-primary"></i></a>&nbsp;<a @onclick="async () => await onProductPlusMinusClicked(item.ProductID, 1)"><i class="fas fa-plus-circle text-primary"></i></a>
+                            </td>
+                            <td class="col-2 text-right">@item.TotalPrice.ToString("C2")</td>
+                            <td class="col-1"><a @onclick="async () => await onProductRemoveClicked(item.ProductID)"><i class="fas fa-trash text-danger"></i></a></td>
+                        </tr>
+                    }
+                    <tr class="d-flex">
+                        <td class="col-7"></td>
+                        <td class="col-2">Grand Total</td>
+                        <td class="col-2 text-right"><strong>@ShoppingBasketItems?.Sum(i => i.TotalPrice).ToString("C")</strong></td>
+                        <td class="col-1"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="float-right">
+                <NavLink href="Products" class="btn btn-light border">Continue shopping</NavLink>
+                @if (ShoppingBasketItems.Count() < 1)
+                {
+                    <a class="btn btn-primary disabled">Place order</a>
+                }
+                else
+                {
+                    <NavLink href="Checkout" class="btn btn-primary">Place order</NavLink>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Guid shoppingBasketId;
+
+    public IEnumerable<ShoppingBasketItem> ShoppingBasketItems { get; set; } = Enumerable.Empty<ShoppingBasketItem>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        shoppingBasketId = await _shoppingBasketService.GetShoppingBasketIdAsync();
+        await refresh();
+    }
+
+    private async Task refresh()
+    {
+        ShoppingBasketItems = await _shoppingBasketService.GetShoppingBasketItemsAsync(shoppingBasketId);
+        StateHasChanged();
+    }
+
+    private async Task onProductPlusMinusClicked(int productId, int offset)
+    {
+        if (offset < 0)
+        {
+            await _shoppingBasketService.RemoveProductAsync(productId, false);
+        }
+        else
+        {
+            await _shoppingBasketService.AddProductAsync(productId);
+        }
+        await refresh();
+    }
+
+    private async Task onProductRemoveClicked(int productId)
+    {
+        await _shoppingBasketService.RemoveProductAsync(productId, true);
+        await refresh();
+    }
+}

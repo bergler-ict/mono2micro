@@ -1,0 +1,16 @@
+﻿@model Monolith.Web.Models.ProductModel
+
+<div class="card">
+    <div class="m-4" >
+        <img class="card-img-top center-block" style="max-height: 8rem;" src="@Model.ImageUrl" alt="@Model.Name">
+    </div>
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="price-text card-text text-right text-primary">@Model.Price.ToString("C2")</p>
+        <p class="card-text">@Model.Description</p>
+        <div class="btn-group mt-auto" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-light border"><i class="fas fa-info-circle"></i> Info</button>
+            <a href="@Url.Action("Add", "Cart", new { productIdToAdd = Model.Id })" type="button" class="btn btn-primary text-white"><i class="fas fa-cart-plus"></i> Order</a>
+        </div>
+    </div>
+</div>

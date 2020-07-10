@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "font-awesome@5.13.0",
+      "destination": "Content/lib/font-awesome/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "bootstrap@4.5.0",
+      "destination": "Content/lib/bootstrap/"
+    }
+  ]
+}

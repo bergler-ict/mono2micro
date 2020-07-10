@@ -1,0 +1,59 @@
+﻿@model Monolith.Web.Models.CartModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <h2 class="mb-5">Your shopping cart contents:</h2>
+        <div class="container-fluid">
+            <table class="table ">
+                <thead>
+                    <tr class="d-flex">
+                        <th class="col-4" scope="col">Product</th>
+                        <th class="col-3" scope="col">Quantity</th>
+                        <th class="col-4 text-right" scope="col">Total</th>
+                        <th class="col-1" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr class="d-flex">
+                            <td class="col-4">@item.Product.Name</td>
+                            <td class="col-3">
+                                @item.Quantity&nbsp;
+                                <a href="@Url.Action("Remove", "Cart", new { productIdToRemove = item.Product.Id })"><i class="fas fa-minus-circle text-primary"></i></a>&nbsp;<a href="@Url.Action("Add", "Cart", new { productIdToAdd = item.Product.Id })"><i class="fas fa-plus-circle text-primary"></i></a>
+                            </td>
+                            <td class="col-4 text-right">@item.TotalPrice.ToString("C2")</td>
+                            <td class="col-1"><a href="@Url.Action("Remove", "Cart", new { productIdToRemove = item.Product.Id, all = true })"><i class="fas fa-trash text-danger"></i></a></td>
+                        </tr>
+                    }
+                    <tr class="d-flex">
+                        <td class="col-5"></td>
+                        <td class="col-2">Grand Total</td>
+                        <td class="col-4 text-right"><strong>@Model.Items.Sum(i => i.TotalPrice).ToString("C2")</strong></td>
+                        <td class="col-1"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="float-right">
+                <a href="@Url.Action("Index", "Products")" class="btn btn-light border">Continue shopping</a>
+                @if (Model.Items.Count() < 1)
+                {
+                    <a class="btn btn-primary disabled">Place order</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Index", "Order")" class="btn btn-primary">Place order</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

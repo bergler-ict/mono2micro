@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productserviceweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productserviceweb
+  template:
+    metadata:
+      labels:
+        app: productserviceweb
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: productserviceweb
+        image: [your_containerregistry]/demo/productservice:1.1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: productserviceweb-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: productserviceweb
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8081
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: salesserviceweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: salesserviceweb
+  template:
+    metadata:
+      labels:
+        app: salesserviceweb
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: salesserviceweb
+        image: [your_containerregistry]/demo/salesservice:1.4
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: salesserviceweb-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: salesserviceweb
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

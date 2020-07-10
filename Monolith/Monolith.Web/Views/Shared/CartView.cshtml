@@ -1,0 +1,10 @@
+﻿@model Monolith.Web.Models.CartModel
+
+    <div class="text-center">
+        <i class="fas fa-shopping-cart text-white" style="font-size: xx-large;"></i>
+    </div>
+    <div class="text-white-50 text-center">
+        <p style="margin-bottom: 0">@Model.ItemCount item@(Model.ItemCount != 1 ? "s" : string.Empty)</p>
+        <p>@Model.TotalPrice.ToString("C")</p>
+    </div>
+    

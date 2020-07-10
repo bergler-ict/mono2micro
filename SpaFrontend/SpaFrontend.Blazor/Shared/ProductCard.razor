@@ -1,0 +1,36 @@
+﻿@inject IShoppingBasketService _shoppingBasketService
+@inject IProductsService _productsService 
+@inject NavigationManager _navigationManager
+
+<div class="card">
+    <div class="m-4">
+        <img class="card-img-top center-block" style="max-height: 8rem;" src="@productImageDataUrl" alt="@Product.Name">
+    </div>
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title">@Product.Name</h5>
+        <p class="price-text card-text text-right text-primary">@Product.Price.ToString("C2")</p>
+        <p class="card-text">@Product.Description</p>
+        <div class="btn-group mt-auto" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-light border"><i class="fas fa-info-circle"></i> Info</button>
+            <button type="button" class="btn btn-primary text-white" @onclick="OrderClickedAsync"><i class="fas fa-cart-plus"></i> Order</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Product Product { get; set; }
+
+    private string productImageDataUrl { get; set; } = null;
+
+    private async Task OrderClickedAsync(MouseEventArgs e)
+    {
+        await _shoppingBasketService.AddProductAsync(Product.Id);
+        _navigationManager.NavigateTo("ShoppingBasket");
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        productImageDataUrl = await _productsService.GetProductImageDataUrlAsync(Product.Id);
+    }
+}

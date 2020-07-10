@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6A733D49-9BFD-48F1-99C9-679BA5FC47CB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Monolith.Web</RootNamespace>
+    <AssemblyName>Monolith.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44337</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=5.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.5.0.0\lib\net461\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.5.0.0\lib\net461\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=5.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.5.0.0\lib\net461\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApi.OutputCache.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Strathweb.CacheOutput.WebApi2.0.11.0\lib\net45\WebApi.OutputCache.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApi.OutputCache.V2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Strathweb.CacheOutput.WebApi2.0.11.0\lib\net45\WebApi.OutputCache.V2.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acl\Product\Controllers\AclProductCategoryController.cs" />
+    <Compile Include="Acl\Product\Controllers\AclProductController.cs" />
+    <Compile Include="Acl\Product\Models\Product.cs" />
+    <Compile Include="Acl\ShoppingBasket\Controllers\AclShoppingBasketController.cs" />
+    <Compile Include="Acl\ShoppingBasket\Controllers\AclShoppingBasketItemController.cs" />
+    <Compile Include="Acl\ShoppingBasket\Models\ShoppingBasket.cs" />
+    <Compile Include="Acl\ShoppingBasket\Models\ShoppingBasketItem.cs" />
+    <Compile Include="App_Start\AutofacConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Code\IEnumerableExtensions.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CartItemModel.cs" />
+    <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Controllers\ProductImageController.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ProductsModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\backdrop.jpg" />
+    <Content Include="Content\Images\bicycle_nature.png" />
+    <Content Include="Content\Images\Bike.gif" />
+    <Content Include="Content\Images\bike.png" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\pixel.css" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Content\lib\bootstrap\dist\js\pixel.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\alert.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\button.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\carousel.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\collapse.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\dropdown.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\index.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\modal.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\popover.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\scrollspy.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\tab.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\toast.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\tooltip.js" />
+    <Content Include="Content\lib\bootstrap\js\dist\util.js" />
+    <Content Include="Content\lib\bootstrap\js\src\alert.js" />
+    <Content Include="Content\lib\bootstrap\js\src\button.js" />
+    <Content Include="Content\lib\bootstrap\js\src\carousel.js" />
+    <Content Include="Content\lib\bootstrap\js\src\collapse.js" />
+    <Content Include="Content\lib\bootstrap\js\src\dropdown.js" />
+    <Content Include="Content\lib\bootstrap\js\src\index.js" />
+    <Content Include="Content\lib\bootstrap\js\src\modal.js" />
+    <Content Include="Content\lib\bootstrap\js\src\popover.js" />
+    <Content Include="Content\lib\bootstrap\js\src\scrollspy.js" />
+    <Content Include="Content\lib\bootstrap\js\src\tab.js" />
+    <Content Include="Content\lib\bootstrap\js\src\toast.js" />
+    <Content Include="Content\lib\bootstrap\js\src\tools\sanitizer.js" />
+    <Content Include="Content\lib\bootstrap\js\src\tooltip.js" />
+    <Content Include="Content\lib\bootstrap\js\src\util.js" />
+    <Content Include="Content\lib\font-awesome\css\all.css" />
+    <Content Include="Content\lib\font-awesome\css\all.min.css" />
+    <Content Include="Content\lib\font-awesome\css\brands.css" />
+    <Content Include="Content\lib\font-awesome\css\brands.min.css" />
+    <Content Include="Content\lib\font-awesome\css\fontawesome.css" />
+    <Content Include="Content\lib\font-awesome\css\fontawesome.min.css" />
+    <Content Include="Content\lib\font-awesome\css\regular.css" />
+    <Content Include="Content\lib\font-awesome\css\regular.min.css" />
+    <Content Include="Content\lib\font-awesome\css\solid.css" />
+    <Content Include="Content\lib\font-awesome\css\solid.min.css" />
+    <Content Include="Content\lib\font-awesome\css\svg-with-js.css" />
+    <Content Include="Content\lib\font-awesome\css\svg-with-js.min.css" />
+    <Content Include="Content\lib\font-awesome\css\v4-shims.css" />
+    <Content Include="Content\lib\font-awesome\css\v4-shims.min.css" />
+    <Content Include="Content\lib\font-awesome\js\all.js" />
+    <Content Include="Content\lib\font-awesome\js\all.min.js" />
+    <Content Include="Content\lib\font-awesome\js\brands.js" />
+    <Content Include="Content\lib\font-awesome\js\brands.min.js" />
+    <Content Include="Content\lib\font-awesome\js\conflict-detection.js" />
+    <Content Include="Content\lib\font-awesome\js\conflict-detection.min.js" />
+    <Content Include="Content\lib\font-awesome\js\fontawesome.js" />
+    <Content Include="Content\lib\font-awesome\js\fontawesome.min.js" />
+    <Content Include="Content\lib\font-awesome\js\regular.js" />
+    <Content Include="Content\lib\font-awesome\js\regular.min.js" />
+    <Content Include="Content\lib\font-awesome\js\solid.js" />
+    <Content Include="Content\lib\font-awesome\js\solid.min.js" />
+    <Content Include="Content\lib\font-awesome\js\v4-shims.js" />
+    <Content Include="Content\lib\font-awesome\js\v4-shims.min.js" />
+    <Content Include="Content\lib\font-awesome\sprites\brands.svg" />
+    <Content Include="Content\lib\font-awesome\sprites\regular.svg" />
+    <Content Include="Content\lib\font-awesome\sprites\solid.svg" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-solid-900.svg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="libman.json" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\lib\font-awesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\lib\bootstrap\LICENSE" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\alert.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\button.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\carousel.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\collapse.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\dropdown.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\index.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\modal.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\popover.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\scrollspy.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\tab.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\toast.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\tooltip.js.map" />
+    <Content Include="Content\lib\bootstrap\js\dist\util.js.map" />
+    <Content Include="Content\lib\bootstrap\package.json" />
+    <Content Include="Content\lib\bootstrap\README.md" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_background-variant.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_badge.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_alert.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_float.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_grid-framework.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_hover.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_nav-divider.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_screen-reader.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_size.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_table-row.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_text-emphasis.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_text-hide.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="Content\lib\bootstrap\scss\mixins\_visibility.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_align.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_background.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_borders.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_clearfix.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_display.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_embed.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_flex.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_float.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_interactions.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_overflow.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_position.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_screenreaders.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_shadows.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_sizing.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_spacing.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_stretched-link.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_text.scss" />
+    <Content Include="Content\lib\bootstrap\scss\utilities\_visibility.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_badge.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_button-group.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_buttons.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_card.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_carousel.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_close.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_code.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_custom-forms.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_dropdown.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_forms.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_functions.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_grid.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_images.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_input-group.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_jumbotron.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_list-group.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_media.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_mixins.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_modal.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_nav.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_navbar.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_pagination.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_popover.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_print.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_progress.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_reboot.scss" />
+    <Content Include="Content\lib\bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_root.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_spinners.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_tables.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_toasts.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_tooltip.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_transitions.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_type.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_utilities.scss" />
+    <Content Include="Content\lib\bootstrap\scss\_variables.scss" />
+    <Content Include="Content\lib\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="Content\lib\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="Content\lib\bootstrap\scss\bootstrap.scss" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Shared\ProductCardView.cshtml" />
+    <Content Include="Views\Shared\CartView.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\ProductImage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Monolith.Data\Monolith.Data.csproj">
+      <Project>{70866fda-cd9c-4799-b4a0-6acfa4410f80}</Project>
+      <Name>Monolith.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Monolith.Logic\Monolith.Logic.csproj">
+      <Project>{93B28084-3625-4AF1-B105-4C302ED6F215}</Project>
+      <Name>Monolith.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64031</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44337/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
